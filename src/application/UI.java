@@ -33,7 +33,7 @@ public class UI {
 		System.out.flush();
 	}
 
-	public static void printBoard(ChessPiece[][] pieces) {
+	public static void printBoard(ChessPiece[][] pieces, ChessPiece capturedPiece) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
@@ -42,6 +42,8 @@ public class UI {
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
+		System.out.println();
+		System.out.println("Captured Pieces: " + capturedPiece);
 	}
 
 	private static void printPiece(ChessPiece piece) {

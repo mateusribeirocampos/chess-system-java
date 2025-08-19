@@ -14,11 +14,11 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
+		ChessPiece capturedPiece = null;
 
 		while (true) {
 			try {
-				UI.clearScreen();
-				UI.printBoard(chessMatch.getPieces());
+				UI.printBoard(chessMatch.getPieces(), capturedPiece);
 				System.out.println();
 				System.out.print("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
@@ -27,7 +27,7 @@ public class Program {
 				System.out.print("Target: ");
 				ChessPosition target = UI.readChessPosition(sc);
 
-				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+				capturedPiece = chessMatch.performChessMove(source, target);
 
 			} catch (ChessException e) {
 				System.out.println(e.getMessage());
@@ -38,5 +38,5 @@ public class Program {
 			}
 		}
 	}
-
+	
 }
