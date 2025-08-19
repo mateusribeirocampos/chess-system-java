@@ -43,7 +43,7 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 		System.out.println();
-		System.out.println("Captured Pieces: " + capturedPiece);
+		System.out.println("Captured Pieces:  " + capturedPiece);
 	}
 
 	private static void printPiece(ChessPiece piece) {
