@@ -27,9 +27,9 @@ public class Rook extends ChessPiece {
 			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 			rookPosition.setRow(rookPosition.getRow() - 1);
 
-			if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
-				mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
-			}
+		}
+		if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
+			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 		}
 
 		// left
@@ -37,10 +37,9 @@ public class Rook extends ChessPiece {
 		while (getBoard().positionExists(rookPosition) && !getBoard().thereIsAPiece(rookPosition)) {
 			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 			rookPosition.setColumn(rookPosition.getColumn() - 1);
-
-			if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
-				mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
-			}
+		}
+		if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
+			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 		}
 
 		// right
@@ -48,10 +47,9 @@ public class Rook extends ChessPiece {
 		while (getBoard().positionExists(rookPosition) && !getBoard().thereIsAPiece(rookPosition)) {
 			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 			rookPosition.setColumn(rookPosition.getColumn() + 1);
-
-			if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
-				mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
-			}
+		}
+		if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
+			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 		}
 
 		// below
@@ -59,10 +57,9 @@ public class Rook extends ChessPiece {
 		while (getBoard().positionExists(rookPosition) && !getBoard().thereIsAPiece(rookPosition)) {
 			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 			rookPosition.setRow(rookPosition.getRow() + 1);
-
-			if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
-				mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
-			}
+		}
+		if (getBoard().positionExists(rookPosition) && isThereOpponentPiece(rookPosition)) {
+			mat[rookPosition.getRow()][rookPosition.getColumn()] = true;
 		}
 
 		return mat;
