@@ -6,7 +6,6 @@ import chess.ChessPiece;
 import chess.Color;
 
 public class Pawn extends ChessPiece {
-
 	public Pawn(Board board, Color color) {
 		super(board, color);
 	}
@@ -15,7 +14,6 @@ public class Pawn extends ChessPiece {
 	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		Position pawnPosition = new Position(0, 0);
-
 		// Verify what kind piece color the user is play
 		if (getColor() == Color.WHITE) {
 			pawnPosition.setValues(position.getRow() - 1, position.getColumn());
@@ -41,7 +39,6 @@ public class Pawn extends ChessPiece {
 			if (getBoard().positionExists(pawnPosition) && isThereOpponentPiece(pawnPosition)) {
 				mat[pawnPosition.getRow()][pawnPosition.getColumn()] = true;
 			}
-
 		} else {
 			pawnPosition.setValues(position.getRow() + 1, position.getColumn());
 			// verify the position that pawn can move
@@ -69,10 +66,9 @@ public class Pawn extends ChessPiece {
 		}
 		return mat;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "P";
 	}
-
 }
