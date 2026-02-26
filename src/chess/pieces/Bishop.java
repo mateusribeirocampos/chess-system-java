@@ -41,7 +41,7 @@ public class Bishop extends ChessPiece {
 		bishopPosition.setValues(position.getRow() + 1, position.getColumn() - 1);
 		while (getBoard().positionExists(bishopPosition) && !getBoard().thereIsAPiece(bishopPosition)) {
 			mat[bishopPosition.getRow()][bishopPosition.getColumn()] = true;
-			bishopPosition.setValues(bishopPosition.getRow() + 1, getMoveCount() - 1);
+			bishopPosition.setValues(bishopPosition.getRow() + 1, bishopPosition.getColumn() - 1);
 		}
 		if (getBoard().positionExists(bishopPosition) && isThereOpponentPiece(bishopPosition)) {
 			mat[bishopPosition.getRow()][bishopPosition.getColumn()] = true;

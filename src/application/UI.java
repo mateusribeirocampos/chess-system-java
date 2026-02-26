@@ -43,17 +43,19 @@ public class UI {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
+		System.out.println("Select the item, and the desired option will be displayed.");
 		System.out.println();
 		System.out.println("Turn : " + chessMatch.getTurn());
-		if (!chessMatch.getCheckMate()) {
+		if (chessMatch.getCheckMate()) {
+			System.out.println("CHECKMATE!!!");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+		} else if (chessMatch.getStalemate()) {
+			System.out.println("STALEMATE! The game is a draw.");
+		} else {
 			System.out.println("Waiting player : " + chessMatch.getCurrentPlayer());
 			if (chessMatch.getCheck()) {
 				System.out.println("CHECK!");
 			}
-
-		} else {
-			System.out.println("CHECKMATE!!!");
-			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
 		}
 	}
 

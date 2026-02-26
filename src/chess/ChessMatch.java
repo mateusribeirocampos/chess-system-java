@@ -21,6 +21,7 @@ public class ChessMatch {
 	private Board board;
 	private boolean check;
 	private boolean checkMate;
+	private boolean stalemate;
 	private ChessPiece enPassantVulnerable;
 	private ChessPiece promoted;
 
@@ -98,17 +99,17 @@ public class ChessMatch {
 		}
 
 		check = (testCheck(opponent(currentPlayer))) ? true : false;
-		// if the play that I do leave the opponent in checkMate, if is chackMate is
-		// true
 		if (testCheckMate(opponent(currentPlayer))) {
 			checkMate = true;
+		} else if (testStalemate(opponent(currentPlayer))) {
+			stalemate = true;
 		} else {
 			nextTurn();
 		}
 
 		// Espcial mode en passant
-		if (movedPiece instanceof Pawn && (target.getRow() == source.getRow() - 2)
-				|| target.getRow() == source.getRow() + 2) {
+		if (movedPiece instanceof Pawn && ((target.getRow() == source.getRow() - 2)
+				|| (target.getRow() == source.getRow() + 2))) {
 			enPassantVulnerable = movedPiece;
 		} else {
 			enPassantVulnerable = null;
@@ -327,6 +328,36 @@ public class ChessMatch {
 
 	public boolean getCheckMate() {
 		return checkMate;
+	}
+
+	public boolean getStalemate() {
+		return stalemate;
+	}
+
+	private boolean testStalemate(Color color) {
+		if (testCheck(color)) {
+			return false;
+		}
+		List<Piece> colorPieces = pieceOnTheBoard.stream().filter(x -> ((ChessPiece) x).getColor() == color)
+				.collect(Collectors.toList());
+		for (Piece currentPiece : colorPieces) {
+			boolean[][] mat = currentPiece.possibleMoves();
+			for (int i = 0; i < board.getRows(); i++) {
+				for (int j = 0; j < board.getColumns(); j++) {
+					if (mat[i][j]) {
+						Position source = ((ChessPiece) currentPiece).getChessPosition().toPosition();
+						Position target = new Position(i, j);
+						Piece capturedPiece = makeMove(source, target);
+						boolean testCheck = testCheck(color);
+						undoMove(source, target, capturedPiece);
+						if (!testCheck) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
